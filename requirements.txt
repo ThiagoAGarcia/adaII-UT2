@@ -1,11 +1,10 @@
 fastapi
 uvicorn[standard]
 sqlalchemy
-psycopg2-binary
+pymysql
 python-dotenv
 pydantic
 pydantic-settings
 alembic
 PyJWT
-passlib[bcrypt]
 bcrypt

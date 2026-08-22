@@ -1,7 +1,3 @@
-DROP DATABASE IF EXISTS db_games;
-
-CREATE DATABASE db_games;
-
 USE db_games;
 
 CREATE TABLE Persona (
@@ -19,8 +15,8 @@ CREATE TABLE Login (
 
 CREATE TABLE Genero
 (
-    Nombre VARCHAR(30) PRIMARY KEY,
-    Descripcion VARCHAR(300)
+    NombreGenero VARCHAR(30) PRIMARY KEY,
+    DescripcionGenero VARCHAR(300)
 );
 
 CREATE TABLE Juego (
@@ -32,7 +28,7 @@ CREATE TABLE JuegoTieneGenero (
     IdJuego INT,
     NombreGenero VARCHAR(30),
     FOREIGN KEY (IdJuego) REFERENCES Juego(IdJuego),
-    FOREIGN KEY (NombreGenero) REFERENCES Genero(Nombre),
+    FOREIGN KEY (NombreGenero) REFERENCES Genero(NombreGenero),
     PRIMARY KEY (IdJuego, NombreGenero)
 );
 
@@ -41,6 +37,7 @@ CREATE TABLE Compra (
     EmailPersona VARCHAR(300),
     IdJuego INT,
     FechaHoraCompra DATETIME DEFAULT(NOW()),
+    CostoCompra INT,
     FOREIGN KEY (EmailPersona) REFERENCES Persona(EmailPersona),
     FOREIGN KEY (IdJuego) REFERENCES Juego(IdJuego),
     PRIMARY KEY (EmailPersona, IdJuego)
