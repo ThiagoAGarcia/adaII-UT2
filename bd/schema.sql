@@ -13,8 +13,7 @@ CREATE TABLE Login (
     FOREIGN KEY (EmailPersona) REFERENCES Persona(EmailPersona)
 );
 
-CREATE TABLE Genero
-(
+CREATE TABLE Genero (
     NombreGenero VARCHAR(30) PRIMARY KEY,
     DescripcionGenero VARCHAR(300)
 );
@@ -31,7 +30,6 @@ CREATE TABLE JuegoTieneGenero (
     FOREIGN KEY (NombreGenero) REFERENCES Genero(NombreGenero),
     PRIMARY KEY (IdJuego, NombreGenero)
 );
-
 
 CREATE TABLE Compra (
     EmailPersona VARCHAR(300),
