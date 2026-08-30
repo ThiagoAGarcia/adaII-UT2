@@ -1,6 +1,13 @@
 services:
   web:
-    image: ${API_IMAGE:-api:1.0}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        API_VERSION: dev
+        FORCE_UNHEALTHY: "false"
+
+    image: api:dev
     container_name: fastapi_app
 
     env_file:
@@ -22,7 +29,10 @@ services:
         condition: service_healthy
 
     volumes:
+      - .:/app
       - audit_logs:/app/logs
+
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
     healthcheck:
       test:
@@ -36,8 +46,6 @@ services:
       timeout: 3s
       retries: 4
       start_period: 5s
-
-    restart: unless-stopped
 
   db:
     image: mysql:8.4
@@ -67,8 +75,6 @@ services:
       timeout: 5s
       retries: 10
       start_period: 15s
-
-    restart: unless-stopped
 
 volumes:
   mysqldata:
