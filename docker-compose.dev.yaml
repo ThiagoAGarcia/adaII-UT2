@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
       args:
         API_VERSION: dev
         FORCE_UNHEALTHY: "false"
@@ -69,7 +69,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD --silent"
+          "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD --silent && mysql -h localhost -u root -p$$MYSQL_ROOT_PASSWORD -D $$MYSQL_DATABASE -e 'SELECT 1 FROM Login LIMIT 1' --silent"
         ]
       interval: 5s
       timeout: 5s

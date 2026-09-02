@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [ "$#" -ne 1 ]; then
-  echo "Uso: ./scripts/deploy.sh <version>"
+  echo "Uso: bash ./scripts/deploy.sh <version>"
   exit 2
 fi
 
@@ -14,7 +14,7 @@ mkdir -p .deploy deployment_logs
 if ! docker image inspect "${IMAGE}" >/dev/null 2>&1; then
   echo "No existe la imagen ${IMAGE}."
   echo "Construyela antes con:"
-  echo "  ./scripts/build_version.sh ${VERSION} false"
+  echo "  bash ./scripts/build_version.sh ${VERSION} false"
   exit 2
 fi
 

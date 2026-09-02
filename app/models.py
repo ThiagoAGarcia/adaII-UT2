@@ -21,7 +21,7 @@ class Login(Base):
     )
 
     ContrasenaLogin = Column(
-        "ContraseñaLogin",
+        "ContrasenaLogin",
         String(256),
         nullable=False,
     )

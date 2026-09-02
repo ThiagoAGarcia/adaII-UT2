@@ -8,7 +8,7 @@ fi
 
 mkdir -p .deploy deployment_logs
 
-./scripts/build_version.sh 1.0 false
+bash ./scripts/build_version.sh 1.0 false
 
 export API_IMAGE="api:1.0"
 docker compose up -d

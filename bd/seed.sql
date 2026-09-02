@@ -16,7 +16,7 @@ VALUES (
 
 INSERT INTO Login (
     EmailPersona,
-    ContraseñaLogin
+    ContrasenaLogin
 )
 VALUES (
     'demo@adaii.local',

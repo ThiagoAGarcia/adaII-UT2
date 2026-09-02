@@ -8,7 +8,7 @@ CREATE TABLE Persona (
 
 CREATE TABLE Login (
     EmailPersona VARCHAR(100) PRIMARY KEY,
-    ContraseñaLogin VARCHAR(256) NOT NULL,
+    ContrasenaLogin VARCHAR(256) NOT NULL,
     FechaCreacion DATETIME DEFAULT(NOW()),
     FOREIGN KEY (EmailPersona) REFERENCES Persona(EmailPersona)
 );

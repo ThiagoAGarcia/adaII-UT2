@@ -8,7 +8,7 @@ fi
 mkdir -p .deploy deployment_logs
 
 echo "=== 1. Construir y desplegar version estable 1.0 ==="
-./scripts/build_version.sh 1.0 false
+bash ./scripts/build_version.sh 1.0 false
 export API_IMAGE="api:1.0"
 docker compose up -d
 
@@ -27,11 +27,11 @@ done
 
 echo
 echo "=== 2. Construir version defectuosa 2.0-broken ==="
-./scripts/build_version.sh 2.0-broken true
+bash ./scripts/build_version.sh 2.0-broken true
 
 echo
 echo "=== 3. Intentar desplegarla: debe activar rollback ==="
-./scripts/deploy.sh 2.0-broken || true
+bash ./scripts/deploy.sh 2.0-broken || true
 
 echo
 echo "=== 4. Version que quedo ejecutandose ==="
